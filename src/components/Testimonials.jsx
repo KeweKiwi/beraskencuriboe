@@ -28,33 +28,33 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="section-shell bg-sage px-0 py-24 text-ink md:py-28">
+    <section className="section-shell bg-sage px-0 py-16 text-ink md:py-24 lg:py-28">
       <div className="mega-word left-[-6rem] top-16 rotate-[-4deg] opacity-70">Testimoni</div>
       <span className="asterisk right-[12%] top-20 text-olive">*</span>
 
       <div className="section-inner relative z-10">
         <div className="reveal max-w-4xl">
-          <span className="label-strip text-sm" style={{ transform: 'rotate(-2deg)' }}>
+          <span className="label-strip text-xs md:text-sm" style={{ transform: 'rotate(-2deg)' }}>
             Testimoni
           </span>
           <h2 className="section-title display-type mt-5">
             Jamu modern yang terasa dekat.
           </h2>
-          <p className="body-copy mt-5 text-base font-semibold text-forest md:text-lg">
+          <p className="body-copy mt-5 text-sm font-semibold text-forest sm:text-base md:text-lg">
             Social proof dari booklet dibuat ringkas untuk landing page: rasa autentik, lebih
             fresh, dan cocok untuk rutinitas anak muda sampai keluarga.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
+        <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-2 md:gap-5">
           {testimonials.map((item) => (
             <article
               key={item.persona}
-              className="reveal relative rounded-[1.6rem] bg-ink p-6 text-paper shadow-label md:p-7"
+              className="reveal relative rounded-[1.3rem] bg-ink p-5 text-paper shadow-label md:rounded-[1.6rem] md:p-7"
               style={{ transform: `rotate(${item.rotate})` }}
             >
               <div className="absolute -bottom-4 left-10 h-8 w-8 rotate-45 bg-ink" />
-              <p className="display-type text-3xl text-cream">{item.persona}</p>
+              <p className="display-type text-2xl text-cream md:text-3xl">{item.persona}</p>
               <p className="mt-4 text-sm font-medium leading-relaxed text-paper/90 md:text-base">
                 "{item.quote}"
               </p>

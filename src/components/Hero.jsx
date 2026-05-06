@@ -35,7 +35,7 @@ export default function Hero({ heroRef, mainCanRef, onBuy }) {
       id="home"
       ref={heroRef}
       data-can-phase="hero"
-      className="section-shell hero-transition-section green-noise min-h-screen px-0 pb-12 pt-24 text-ink md:pt-28 lg:pb-10"
+      className="section-shell hero-transition-section green-noise min-h-screen px-0 pb-10 pt-24 text-ink md:pt-28 lg:pb-10"
     >
       <div className="mega-word parallax-word left-1/2 top-24 -translate-x-1/2 opacity-80">
         Beras Kencur
@@ -44,35 +44,35 @@ export default function Hero({ heroRef, mainCanRef, onBuy }) {
       <img
         src={leafOne}
         alt=""
-        className="float-slow absolute left-3 top-28 z-10 w-28 opacity-80 md:left-10 md:w-40"
+        className="float-slow absolute left-3 top-28 z-10 hidden w-28 opacity-80 md:left-10 md:block md:w-40"
       />
       <img
         src={leafTwo}
         alt=""
-        className="float-alt absolute bottom-16 right-4 z-10 w-24 opacity-75 md:right-12 md:w-36"
+        className="float-alt absolute bottom-16 right-4 z-10 hidden w-24 opacity-75 md:right-12 md:block md:w-36"
       />
 
-      <div className="section-inner relative z-20 grid min-h-[620px] items-center gap-10 lg:grid-cols-[0.98fr_1.02fr] xl:min-h-[660px]">
-        <div className="reveal max-w-3xl pt-8">
+      <div className="section-inner relative z-20 grid min-h-0 items-center gap-8 py-4 lg:min-h-[620px] lg:grid-cols-[0.98fr_1.02fr] lg:gap-10 lg:py-0 xl:min-h-[660px]">
+        <div className="reveal max-w-3xl pt-4 lg:pt-8">
           <h1 className="hero-title display-type max-w-3xl text-ink">
             Jamu Tradisional, Rasa Masa Kini.
           </h1>
           <img
             src={productCan}
             alt=""
-            className="mobile-hero-can can-local mx-auto my-5 block w-44 md:hidden"
+            className="mobile-hero-can can-local mx-auto my-4 block w-36 sm:w-44 md:hidden"
           />
-          <p className="body-copy mt-6 max-w-2xl text-base font-semibold text-forest md:text-lg">
+          <p className="body-copy mt-5 max-w-2xl text-sm font-semibold text-forest sm:text-base md:mt-6 md:text-lg">
             Beras Kencur by Jamu Iboe menghadirkan rasa autentik jamu Indonesia dalam
             kemasan modern yang praktis, fresh, dan relevan untuk gaya hidup sehat masa kini.
           </p>
 
-          <div className="mt-7 flex flex-wrap gap-3" aria-label="Brand highlights">
+          <div className="mt-5 flex flex-wrap gap-2 md:mt-7 md:gap-3" aria-label="Brand highlights">
             {['Authentic Herbal Drink', 'Modern & Practical', 'Pilihan Tepat untuk Sehat'].map(
               (badge, index) => (
                 <span
                   key={badge}
-                  className="label-strip text-sm md:text-base"
+                  className="label-strip text-xs md:text-base"
                   style={{ transform: `rotate(${index === 1 ? 2 : index === 2 ? -2 : -1}deg)` }}
                 >
                   {badge}
@@ -81,14 +81,14 @@ export default function Hero({ heroRef, mainCanRef, onBuy }) {
             )}
           </div>
 
-          <div className="mt-6 max-w-xl rounded-[1.4rem] border border-forest/15 bg-paper/70 p-4 shadow-soft backdrop-blur">
+          <div className="mt-5 max-w-xl rounded-[1.2rem] border border-forest/15 bg-paper/70 p-3 shadow-soft backdrop-blur md:mt-6 md:rounded-[1.4rem] md:p-4">
             <div className="flex flex-wrap gap-2">
               {hotspots.map((hotspot) => (
                 <button
                   key={hotspot.id}
                   type="button"
                   onClick={() => setActiveHotspot(hotspot)}
-                  className={`rounded-full px-4 py-2 text-xs font-extrabold uppercase transition hover:-translate-y-0.5 ${
+                  className={`min-h-10 rounded-full px-3 py-2 text-[11px] font-extrabold uppercase transition hover:-translate-y-0.5 sm:px-4 sm:text-xs ${
                     activeHotspot.id === hotspot.id
                       ? 'bg-ink text-paper'
                       : 'bg-cream text-ink hover:bg-pale'
@@ -99,12 +99,12 @@ export default function Hero({ heroRef, mainCanRef, onBuy }) {
                 </button>
               ))}
             </div>
-            <p className="mt-3 text-sm font-semibold leading-relaxed text-forest">
+            <p className="mt-3 text-xs font-semibold leading-relaxed text-forest sm:text-sm">
               {activeHotspot.text}
             </p>
           </div>
 
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row md:mt-7">
             <button
               type="button"
               onClick={scrollToAbout}
@@ -122,7 +122,7 @@ export default function Hero({ heroRef, mainCanRef, onBuy }) {
           </div>
         </div>
 
-        <div className="reveal relative min-h-[520px] lg:min-h-[620px]">
+        <div className="reveal relative hidden min-h-[520px] md:block lg:min-h-[620px]">
           <div className="absolute left-1/2 top-24 hidden h-[410px] w-[410px] -translate-x-1/2 rounded-full bg-paper/30 blur-2xl lg:block" />
           <div
             ref={mainCanRef}

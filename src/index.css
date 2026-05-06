@@ -59,6 +59,7 @@ img {
   text-transform: uppercase;
   text-wrap: balance;
   max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .body-copy {
@@ -68,6 +69,10 @@ img {
 .section-shell {
   position: relative;
   overflow: hidden;
+}
+
+section[id] {
+  scroll-margin-top: 104px;
 }
 
 .hero-transition-section {
@@ -327,6 +332,111 @@ img {
   will-change: transform, opacity;
 }
 
+.cta-section {
+  isolation: isolate;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 8% 0 auto;
+  z-index: 0;
+  height: 48%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 68% 52%, rgba(255, 253, 245, 0.54), transparent 22rem),
+    radial-gradient(circle at 34% 34%, rgba(131, 169, 76, 0.22), transparent 24rem);
+  filter: blur(8px);
+}
+
+.cta-title-mask {
+  padding-bottom: 0.04em;
+}
+
+.cta-title-line,
+.cta-kicker,
+.cta-copy,
+.cta-microcopy,
+.cta-actions,
+.cta-can-wrap,
+.cta-glow,
+.cta-ring {
+  will-change: transform, opacity;
+}
+
+.cta-can-wrap {
+  transform-origin: 50% 74%;
+}
+
+.cta-can-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 6% 4% 10%;
+  z-index: 11;
+  pointer-events: none;
+  border-radius: 42% 42% 26% 26%;
+  background: linear-gradient(108deg, transparent 8%, rgba(255, 253, 245, 0.34) 42%, transparent 62%);
+  mix-blend-mode: screen;
+  opacity: 0.7;
+  transform: translateX(-80%) skewX(-10deg);
+  animation: can-shine 4.6s ease-in-out infinite;
+}
+
+.cta-glow {
+  box-shadow:
+    0 0 0 48px rgba(255, 253, 245, 0.12),
+    0 28px 80px rgba(18, 61, 42, 0.16);
+}
+
+.cta-ring {
+  pointer-events: none;
+  transform-origin: 50% 50%;
+  box-shadow: 0 0 70px rgba(255, 253, 245, 0.12) inset;
+}
+
+.cta-ring::before,
+.cta-ring::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #123d2a;
+  box-shadow: 0 0 22px rgba(18, 61, 42, 0.28);
+}
+
+.cta-ring::before {
+  left: 20%;
+  top: 11%;
+}
+
+.cta-ring::after {
+  right: 14%;
+  bottom: 20%;
+  background: #f5e8c7;
+}
+
+.cta-actions a,
+.cta-actions button {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-actions a::after,
+.cta-actions button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 0%, rgba(255, 253, 245, 0.36) 48%, transparent 70%);
+  transform: translateX(-130%);
+  transition: transform 0.7s ease;
+}
+
+.cta-actions a:hover::after,
+.cta-actions button:hover::after {
+  transform: translateX(130%);
+}
+
 @keyframes float-slow {
   0%,
   100% {
@@ -374,10 +484,38 @@ img {
   }
 }
 
+@keyframes can-shine {
+  0%,
+  46% {
+    opacity: 0;
+    transform: translateX(-80%) skewX(-10deg);
+  }
+  58% {
+    opacity: 0.78;
+  }
+  82%,
+  100% {
+    opacity: 0;
+    transform: translateX(85%) skewX(-10deg);
+  }
+}
+
 @media (max-width: 1023px) {
   .mega-word {
     font-size: 4.5rem;
     opacity: 0.72;
+  }
+
+  .cta-section {
+    min-height: auto;
+  }
+
+  .cta-title-line {
+    transform: none;
+  }
+
+  .usp-label {
+    transform: none !important;
   }
 }
 
@@ -386,13 +524,63 @@ img {
     width: min(100% - 24px, 560px);
   }
 
+  .hero-title {
+    font-size: clamp(2.85rem, 14vw, 3.55rem);
+    line-height: 0.96;
+  }
+
+  .section-title {
+    font-size: clamp(2.8rem, 14vw, 4.25rem);
+    line-height: 0.96;
+  }
+
+  .panel-title {
+    font-size: clamp(2.35rem, 12vw, 3.35rem);
+    line-height: 0.98;
+  }
+
+  .body-copy {
+    line-height: 1.58;
+  }
+
   .label-strip {
     min-height: 40px;
     padding: 0.62rem 0.82rem;
+    line-height: 1.05;
   }
 
   .mega-word {
     font-size: 3.2rem;
+  }
+
+  .asterisk {
+    font-size: 3rem;
+  }
+
+  .halftone-cut {
+    max-width: 74vw;
+  }
+
+  .can-local {
+    filter: drop-shadow(0 18px 24px rgba(18, 61, 42, 0.2));
+  }
+}
+
+@media (max-width: 390px) {
+  .section-inner {
+    width: min(100% - 20px, 560px);
+  }
+
+  .hero-title {
+    font-size: clamp(2.55rem, 13.4vw, 3.15rem);
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 13vw, 3.55rem);
+  }
+
+  .label-strip {
+    padding-inline: 0.68rem;
   }
 }
 

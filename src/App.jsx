@@ -149,6 +149,87 @@ export default function App() {
           stagger: 4,
         });
 
+        const ctaSection = document.querySelector('.cta-section');
+        const ctaTimeline = ctaSection
+          ? gsap
+              .timeline({
+                scrollTrigger: {
+                  trigger: ctaSection,
+                  start: 'top 76%',
+                  end: 'bottom 42%',
+                  scrub: 1.05,
+                },
+              })
+              .fromTo(
+                '.cta-kicker',
+                { autoAlpha: 0, y: 32, rotate: -8 },
+                { autoAlpha: 1, y: 0, rotate: 2, ease: 'power2.out' },
+                0,
+              )
+              .fromTo(
+                '.cta-title-line',
+                { yPercent: 112, rotate: -5, autoAlpha: 0 },
+                { yPercent: 0, rotate: 0, autoAlpha: 1, ease: 'power4.out', stagger: 0.075 },
+                0.06,
+              )
+              .fromTo(
+                '.cta-copy',
+                { autoAlpha: 0, y: 34 },
+                { autoAlpha: 1, y: 0, ease: 'power2.out' },
+                0.28,
+              )
+              .fromTo(
+                '.cta-microcopy',
+                { autoAlpha: 0, x: -34, scale: 0.94 },
+                { autoAlpha: 1, x: 0, scale: 1, ease: 'back.out(1.1)' },
+                0.36,
+              )
+              .fromTo(
+                '.cta-actions > *',
+                { autoAlpha: 0, y: 34, scale: 0.92 },
+                { autoAlpha: 1, y: 0, scale: 1, ease: 'back.out(1.25)', stagger: 0.08 },
+                0.44,
+              )
+              .fromTo(
+                '.cta-can-wrap',
+                { autoAlpha: 0, y: 180, scale: 0.72, rotate: -10 },
+                { autoAlpha: 1, y: 0, scale: 1, rotate: 0, ease: 'power4.out' },
+                0.1,
+              )
+              .fromTo(
+                '.cta-glow',
+                { autoAlpha: 0, scale: 0.55 },
+                { autoAlpha: 1, scale: 1, ease: 'power2.out' },
+                0.16,
+              )
+              .fromTo(
+                '.cta-ring',
+                { autoAlpha: 0, scale: 0.42, rotate: -18 },
+                { autoAlpha: 1, scale: 1, rotate: 0, ease: 'power3.out', stagger: 0.08 },
+                0.2,
+              )
+              .to('.cta-mega', { x: 100, ease: 'none' }, 0)
+              .to('.cta-kencur', { y: 76, x: -28, rotate: -8, ease: 'none' }, 0)
+              .to('.cta-rice', { y: -42, x: 46, rotate: 6, ease: 'none' }, 0)
+          : null;
+
+        const ctaFloat = gsap.to('.cta-can-image', {
+          y: -16,
+          rotate: 1.4,
+          duration: 3.1,
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1,
+        });
+
+        const ctaRingSpin = gsap.to('.cta-ring', {
+          rotate: 360,
+          duration: 30,
+          ease: 'none',
+          repeat: -1,
+          stagger: 5,
+        });
+
         let transition;
         const getTargetMetrics = () => {
           const start = mainCan.getBoundingClientRect();
@@ -257,6 +338,9 @@ export default function App() {
           uspTimeline?.kill();
           uspFloat.kill();
           uspOrbit.kill();
+          ctaTimeline?.kill();
+          ctaFloat.kill();
+          ctaRingSpin.kill();
         };
       });
 
@@ -288,6 +372,7 @@ export default function App() {
             },
           },
         );
+
       });
 
       gsap.utils.toArray('.reveal').forEach((element) => {
@@ -301,7 +386,7 @@ export default function App() {
             ease: 'power3.out',
             scrollTrigger: {
               trigger: element,
-              start: 'top 84%',
+              start: 'top 92%',
               toggleActions: 'play none none reverse',
             },
           },

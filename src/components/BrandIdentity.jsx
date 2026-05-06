@@ -30,19 +30,19 @@ export default function BrandIdentity() {
     <section
       id="brand"
       data-can-phase="brand"
-      className="section-shell cream-field px-0 py-24 text-ink md:py-32"
+      className="section-shell cream-field px-0 py-16 text-ink md:py-24 lg:py-32"
     >
       <div className="mega-word left-[-rem] top-14 rotate-[-3deg]">Brand Identity</div>
       <span className="asterisk right-[12%] top-24 text-fresh">*</span>
       <img src={leafTwo} alt="" className="float-slow absolute bottom-10 left-6 w-32 opacity-55 md:w-48" />
 
-      <div className="section-inner relative z-10 grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr]">
+      <div className="section-inner relative z-10 grid items-center gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
         <div className="reveal">
-          <span className="label-strip text-sm" style={{ transform: 'rotate(2deg)' }}>
+          <span className="label-strip text-xs md:text-sm" style={{ transform: 'rotate(2deg)' }}>
             Brand Identity
           </span>
           <h2 className="section-title display-type mt-5">Natural, fresh, modern.</h2>
-          <p className="body-copy mt-6 text-base font-semibold text-forest md:text-lg">
+          <p className="body-copy mt-5 text-sm font-semibold text-forest sm:text-base md:mt-6 md:text-lg">
             Identitas visualnya menjaga rasa warisan lokal, lalu dibuat lebih ringan, berani,
             dan siap tampil di rak minuman modern.
           </p>
@@ -55,24 +55,24 @@ export default function BrandIdentity() {
                 text: 'Simbol daun pada logo Jamu Iboe melambangkan kehidupan dan alam, sekaligus menegaskan penggunaan bahan yang alami.',
               })
             }
-            className="mt-8 rounded-[1.5rem] border-2 border-ink bg-pale/75 p-6 text-left shadow-soft transition hover:-translate-y-1"
+            className="mt-6 rounded-[1.3rem] border-2 border-ink bg-pale/75 p-5 text-left shadow-soft transition hover:-translate-y-1 md:mt-8 md:rounded-[1.5rem] md:p-6"
           >
-            <img src={logo} alt="IBOE leaf logo" className="mx-auto h-24 object-contain" />
+            <img src={logo} alt="IBOE leaf logo" className="mx-auto h-20 object-contain md:h-24" />
             <span className="mt-4 block text-center text-sm font-extrabold uppercase text-forest">
               Klik logo untuk makna
             </span>
           </button>
         </div>
 
-        <div className="reveal grid gap-6">
-          <div className="rounded-[2rem] bg-ink p-6 text-paper shadow-label">
-            <div className="flex flex-wrap items-center justify-center gap-4">
+        <div className="reveal grid gap-5 md:gap-6">
+          <div className="rounded-[1.5rem] bg-ink p-5 text-paper shadow-label md:rounded-[2rem] md:p-6">
+            <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
               {colorMeanings.map(([name, color, text]) => (
                 <button
                   key={name}
                   type="button"
                   onClick={() => setActive({ title: name, text })}
-                  className="h-16 w-16 rounded-full border-2 border-paper/80 shadow-soft transition hover:-translate-y-1 md:h-20 md:w-20"
+                  className="h-12 w-12 rounded-full border-2 border-paper/80 shadow-soft transition hover:-translate-y-1 sm:h-14 sm:w-14 md:h-20 md:w-20"
                   style={{ backgroundColor: color }}
                   aria-label={`Show meaning of ${name}`}
                 />
@@ -84,10 +84,10 @@ export default function BrandIdentity() {
             </p>
           </div>
 
-          <div className="grid gap-4 rounded-[2rem] border-2 border-ink bg-paper p-5 shadow-soft md:grid-cols-[0.72fr_1fr]">
-            <img src={productCan} alt="Beras Kencur can identity" className="can-local mx-auto w-36 lg:w-40" />
+          <div className="grid gap-4 rounded-[1.5rem] border-2 border-ink bg-paper p-4 shadow-soft md:grid-cols-[0.72fr_1fr] md:rounded-[2rem] md:p-5">
+            <img src={productCan} alt="Beras Kencur can identity" className="can-local mx-auto w-28 sm:w-32 lg:w-40" />
             <div>
-              <div className="mb-4 grid grid-cols-2 gap-2">
+              <div className="mb-4 grid gap-2 sm:grid-cols-2">
                 <button
                   type="button"
                   onClick={() =>
@@ -96,7 +96,7 @@ export default function BrandIdentity() {
                       text: 'Karakter logo terasa retro dan terpercaya, menjaga rasa heritage Jamu Iboe.',
                     })
                   }
-                  className="rounded-sm bg-olive px-4 py-3 text-sm font-extrabold uppercase text-paper transition hover:-translate-y-1"
+                  className="rounded-sm bg-olive px-3 py-3 text-xs font-extrabold uppercase text-paper transition hover:-translate-y-1 md:px-4 md:text-sm"
                 >
                   IBOE / Cooper BT
                 </button>
@@ -108,7 +108,7 @@ export default function BrandIdentity() {
                       text: 'Display font baru memberi rasa modern, segar, dan mudah diingat di berbagai platform.',
                     })
                   }
-                  className="rounded-sm bg-ink px-4 py-3 text-sm font-extrabold uppercase text-paper transition hover:-translate-y-1"
+                  className="rounded-sm bg-ink px-3 py-3 text-xs font-extrabold uppercase text-paper transition hover:-translate-y-1 md:px-4 md:text-sm"
                 >
                   Beras / Pagkaki
                 </button>
@@ -119,14 +119,14 @@ export default function BrandIdentity() {
                     key={chip}
                     type="button"
                     onClick={() => setActive({ title: chip, text })}
-                    className="rounded-full border-2 border-ink bg-cream px-4 py-2 text-xs font-extrabold uppercase text-ink transition hover:-translate-y-1 hover:bg-pale"
+                    className="rounded-full border-2 border-ink bg-cream px-3 py-2 text-[11px] font-extrabold uppercase text-ink transition hover:-translate-y-1 hover:bg-pale md:px-4 md:text-xs"
                   >
                     {chip}
                   </button>
                 ))}
               </div>
-              <div className="mt-5 rounded-[1.3rem] bg-pale p-5">
-                <p className="display-type text-3xl text-ink">{active.title}</p>
+              <div className="mt-5 rounded-[1.1rem] bg-pale p-4 md:rounded-[1.3rem] md:p-5">
+                <p className="display-type text-2xl text-ink md:text-3xl">{active.title}</p>
                 <p className="mt-2 text-sm font-semibold leading-relaxed text-forest md:text-base">{active.text}</p>
               </div>
             </div>
