@@ -520,6 +520,10 @@ section[id] {
 }
 
 @media (max-width: 640px) {
+  section[id] {
+    scroll-margin-top: 76px;
+  }
+
   .section-inner {
     width: min(100% - 24px, 560px);
   }
@@ -547,10 +551,12 @@ section[id] {
     min-height: 40px;
     padding: 0.62rem 0.82rem;
     line-height: 1.05;
+    box-shadow: 5px 6px 0 rgba(18, 61, 42, 0.12);
   }
 
   .mega-word {
     font-size: 3.2rem;
+    opacity: 0.42;
   }
 
   .asterisk {
@@ -563,6 +569,37 @@ section[id] {
 
   .can-local {
     filter: drop-shadow(0 18px 24px rgba(18, 61, 42, 0.2));
+  }
+
+  .about-section .mega-word {
+    top: 1.75rem;
+  }
+
+  .about-visual {
+    max-width: 390px;
+    margin-inline: auto;
+  }
+
+  .about-visual .label-strip {
+    min-height: 34px;
+    padding: 0.48rem 0.62rem;
+  }
+
+  .problem-section button {
+    transform: none !important;
+  }
+
+  .problem-section .pattern-layer,
+  .benefits-section .pattern-layer {
+    opacity: 0.12;
+  }
+
+  .cta-leaf-left,
+  .cta-leaf-right,
+  .cta-rice,
+  .cta-kencur {
+    opacity: 0.42;
+    max-width: 4.8rem;
   }
 }
 

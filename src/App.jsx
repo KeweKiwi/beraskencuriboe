@@ -345,7 +345,7 @@ export default function App() {
       });
 
       mm.add('(max-width: 1023px)', () => {
-        gsap.fromTo(
+        const mobileHero = gsap.fromTo(
           '.mobile-hero-can',
           { autoAlpha: 0, y: 50, scale: 0.92 },
           {
@@ -357,7 +357,7 @@ export default function App() {
           },
         );
 
-        gsap.fromTo(
+        const mobileUsp = gsap.fromTo(
           '.usp-label',
           { autoAlpha: 0, y: 24 },
           {
@@ -373,6 +373,46 @@ export default function App() {
           },
         );
 
+        const mobileProblemCards = gsap.fromTo(
+          '.problem-section button',
+          { autoAlpha: 0, y: 22, scale: 0.97 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.62,
+            stagger: 0.045,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.problem-section',
+              start: 'top 78%',
+            },
+          },
+        );
+
+        const mobileBenefitCards = gsap.fromTo(
+          '.benefits-section button',
+          { autoAlpha: 0, y: 22, scale: 0.97 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.62,
+            stagger: 0.045,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.benefits-section',
+              start: 'top 78%',
+            },
+          },
+        );
+
+        return () => {
+          mobileHero.kill();
+          mobileUsp.kill();
+          mobileProblemCards.kill();
+          mobileBenefitCards.kill();
+        };
       });
 
       gsap.utils.toArray('.reveal').forEach((element) => {

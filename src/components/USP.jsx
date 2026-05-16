@@ -21,7 +21,7 @@ export default function USP() {
       className="usp-section section-shell bg-ink px-0 py-16 text-paper md:py-24 lg:py-32"
     >
       <div className="usp-ambient absolute inset-0" />
-      <img src={kencur} alt="" className="usp-herb halftone-cut absolute -left-8 top-12 w-72 opacity-25 md:w-[34rem]" />
+      <img src={kencur} alt="" className="usp-herb halftone-cut absolute left-0 top-12 w-52 opacity-18 md:w-[34rem] md:opacity-25" />
       <img src={leafOne} alt="" className="usp-leaf float-alt absolute bottom-16 right-8 w-36 opacity-35 md:w-52" />
       <div className="usp-mega mega-word bottom-[-1rem] left-[-4rem] text-paper/10">USP</div>
 

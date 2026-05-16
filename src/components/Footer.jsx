@@ -24,7 +24,7 @@ export default function Footer() {
         Jamu Iboe
       </div>
       <span className="asterisk bottom-12 right-[8%] text-cream/35">*</span>
-      <img src={leafOne} alt="" className="float-slow absolute -left-8 top-10 w-36 opacity-25 md:w-52" />
+      <img src={leafOne} alt="" className="float-slow absolute left-1 top-10 w-28 opacity-20 md:w-52 md:opacity-25" />
       <img src={kencur} alt="" className="float-alt absolute right-6 top-16 w-28 opacity-40 md:right-20 md:w-40" />
       <img src={rice} alt="" className="drift absolute bottom-4 left-6 w-28 opacity-35 md:left-20 md:w-40" />
 

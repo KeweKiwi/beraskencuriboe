@@ -42,9 +42,9 @@ export default function Navbar({ onBuy }) {
   const darkHeader = onDarkSection && !open;
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 px-3 py-3 md:px-6">
+    <header className="fixed left-0 right-0 top-0 z-50 px-3 py-2 md:px-6 md:py-3">
       <nav
-        className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border px-4 py-3 transition-all duration-300 md:px-5 ${
+        className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border px-3 py-2 transition-all duration-300 md:px-5 md:py-3 ${
           darkHeader
             ? 'border-cream/15 bg-ink/86 shadow-label backdrop-blur-xl'
             : scrolled
@@ -62,7 +62,7 @@ export default function Navbar({ onBuy }) {
           <img
             src={logo}
             alt=""
-            className={`h-9 w-12 object-contain transition ${darkHeader ? 'brightness-0 invert' : ''}`}
+            className={`h-8 w-11 object-contain transition md:h-9 md:w-12 ${darkHeader ? 'brightness-0 invert' : ''}`}
           />
           <span
             className={`hidden text-sm font-extrabold leading-tight transition sm:block ${
@@ -110,7 +110,7 @@ export default function Navbar({ onBuy }) {
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
-            className={`inline-flex h-11 w-11 items-center justify-center rounded-full transition lg:hidden ${
+            className={`inline-flex h-10 w-10 items-center justify-center rounded-full transition md:h-11 md:w-11 lg:hidden ${
               darkHeader ? 'bg-cream text-ink' : 'bg-ink text-paper'
             }`}
             aria-label={open ? 'Close menu' : 'Open menu'}
