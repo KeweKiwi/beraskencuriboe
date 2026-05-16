@@ -345,125 +345,186 @@ export default function App() {
       });
 
       mm.add('(max-width: 1023px)', () => {
-        const mobileHero = gsap.fromTo(
-          '.mobile-hero-can',
-          { autoAlpha: 0, y: 50, scale: 0.92 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.9,
-            ease: 'power3.out',
-          },
+        const mobileTweens = [];
+        const add = (animation) => {
+          mobileTweens.push(animation);
+          return animation;
+        };
+
+        add(
+          gsap
+            .timeline({ defaults: { ease: 'power3.out' } })
+            .fromTo(
+              '.hero-title',
+              { autoAlpha: 0, y: 34, rotate: -1.5, scale: 0.96 },
+              { autoAlpha: 1, y: 0, rotate: 0, scale: 1, duration: 0.82 },
+              0,
+            )
+            .fromTo(
+              '.mobile-stage-ring',
+              { autoAlpha: 0, scale: 0.45, rotate: -18 },
+              { autoAlpha: 1, scale: 1, rotate: 0, duration: 0.72, stagger: 0.08 },
+              0.08,
+            )
+            .fromTo(
+              '.mobile-ghost-can',
+              { autoAlpha: 0, y: 44, scale: 0.72 },
+              { autoAlpha: 0.35, y: 0, scale: 1, duration: 0.75, stagger: 0.09 },
+              0.14,
+            )
+            .fromTo(
+              '.mobile-hero-can',
+              { autoAlpha: 0, y: 70, scale: 0.82, rotate: -8 },
+              { autoAlpha: 1, y: 0, scale: 1, rotate: 0, duration: 0.9 },
+              0.2,
+            )
+            .fromTo(
+              ['.mobile-orbit-kencur', '.mobile-orbit-rice'],
+              { autoAlpha: 0, y: 20, scale: 0.72 },
+              { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.08 },
+              0.34,
+            )
+            .fromTo(
+              '.hero-badge',
+              { autoAlpha: 0, y: 22, scale: 0.92 },
+              { autoAlpha: 1, y: 0, scale: 1, duration: 0.55, stagger: 0.06 },
+              0.46,
+            )
+            .fromTo(
+              '.hero-hotspot-card',
+              { autoAlpha: 0, y: 26, scale: 0.95 },
+              { autoAlpha: 1, y: 0, scale: 1, duration: 0.62 },
+              0.55,
+            )
+            .fromTo(
+              '.hero-actions > *',
+              { autoAlpha: 0, y: 20, scale: 0.94 },
+              { autoAlpha: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.06 },
+              0.63,
+            ),
         );
 
-        const mobileUsp = gsap.fromTo(
-          '.usp-label',
-          { y: 18, scale: 0.98 },
-          {
-            y: 0,
-            scale: 1,
-            duration: 0.7,
-            stagger: 0.08,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: '.usp-section',
-              start: 'top 86%',
-            },
-          },
+        add(gsap.to('.mobile-main-can', { y: -12, rotate: 1.5, duration: 2.6, ease: 'sine.inOut', yoyo: true, repeat: -1 }));
+        add(gsap.to('.mobile-ghost-can-left', { y: -10, x: -7, rotate: -12, duration: 3.3, ease: 'sine.inOut', yoyo: true, repeat: -1 }));
+        add(gsap.to('.mobile-ghost-can-right', { y: 12, x: 8, rotate: 10, duration: 3.6, ease: 'sine.inOut', yoyo: true, repeat: -1 }));
+        add(gsap.to('.mobile-stage-ring', { rotate: 360, duration: 28, ease: 'none', repeat: -1, stagger: 3 }));
+
+        add(
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: '#home',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 0.8,
+              },
+            })
+            .to('.mobile-can-stage', { y: -48, scale: 0.94, rotate: 2, ease: 'none' }, 0)
+            .to('.mobile-ghost-can', { autoAlpha: 0.06, x: (index) => (index ? 42 : -42), ease: 'none' }, 0)
+            .to('.hero-title', { y: -26, ease: 'none' }, 0)
+            .to('.hero-hotspot-card', { y: -18, ease: 'none' }, 0),
         );
 
-        const mobileProblemCards = gsap.fromTo(
-          '.problem-section button',
-          { autoAlpha: 0, y: 22, scale: 0.97 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.62,
-            stagger: 0.045,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: '.problem-section',
-              start: 'top 78%',
-            },
-          },
+        add(
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: '#about',
+                start: 'top 82%',
+                end: 'top 26%',
+                scrub: 0.9,
+              },
+            })
+            .fromTo('.about-mobile-flow', { autoAlpha: 0.1, y: 64, scale: 0.92, rotate: -2 }, { autoAlpha: 1, y: 0, scale: 1, rotate: 0, ease: 'none' }, 0)
+            .fromTo('.about-mobile-old', { x: -58, y: 28, rotate: -8, scale: 0.88 }, { x: 0, y: 0, rotate: 0, scale: 1, ease: 'none' }, 0.08)
+            .fromTo('.about-mobile-new', { x: 58, y: 28, rotate: 8, scale: 0.88 }, { x: 0, y: 0, rotate: 0, scale: 1, ease: 'none' }, 0.08)
+            .fromTo('.about-mobile-arrow', { autoAlpha: 0, scale: 0.25, rotate: -44 }, { autoAlpha: 1, scale: 1, rotate: 0, ease: 'none' }, 0.32)
+            .fromTo('.about-mobile-can', { y: 30, scale: 0.78, rotate: -10 }, { y: 0, scale: 1, rotate: 0, ease: 'none' }, 0.2),
         );
 
-        const mobileBenefitCards = gsap.fromTo(
-          '.benefits-section button',
-          { autoAlpha: 0, y: 22, scale: 0.97 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.62,
-            stagger: 0.045,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: '.benefits-section',
-              start: 'top 78%',
-            },
-          },
+        add(
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: '.problem-section',
+                start: 'top 86%',
+                end: 'top 28%',
+                scrub: 0.85,
+              },
+            })
+            .fromTo('.problem-section .label-strip', { autoAlpha: 0, x: -40, rotate: -9 }, { autoAlpha: 1, x: 0, rotate: -2, ease: 'none' }, 0)
+            .fromTo('.problem-section h2', { autoAlpha: 0, y: 54, scale: 0.92, rotate: -2 }, { autoAlpha: 1, y: 0, scale: 1, rotate: 0, ease: 'none' }, 0.05)
+            .fromTo('.problem-section button', { autoAlpha: 0, y: 56, scale: 0.86 }, { autoAlpha: 1, y: 0, scale: 1, ease: 'none', stagger: 0.08 }, 0.22)
+            .to('.problem-section .mega-word', { y: -34, x: -28, ease: 'none' }, 0),
         );
 
-        const mobileAboutFlow = gsap.fromTo(
-          '.about-mobile-flow',
-          { autoAlpha: 0, y: 34, scale: 0.96 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.78,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: '.about-mobile-flow',
-              start: 'top 88%',
-            },
-          },
+        add(
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: '.benefits-section',
+                start: 'top 86%',
+                end: 'top 24%',
+                scrub: 0.9,
+              },
+            })
+            .fromTo('.benefits-section .label-strip', { autoAlpha: 0, x: -44, rotate: 8 }, { autoAlpha: 1, x: 0, rotate: 2, ease: 'none' }, 0)
+            .fromTo('.benefits-section h2', { autoAlpha: 0, y: 58, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, ease: 'none' }, 0.06)
+            .fromTo('.benefits-section .section-inner > div:first-child > div:last-child', { autoAlpha: 0, y: 44, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, ease: 'none' }, 0.18)
+            .fromTo('.benefits-section .section-inner > div:last-child', { autoAlpha: 0, y: 72, scale: 0.92, rotate: 1.8 }, { autoAlpha: 1, y: 0, scale: 1, rotate: 0, ease: 'none' }, 0.26)
+            .fromTo('.benefits-section button', { autoAlpha: 0, y: 36, scale: 0.92 }, { autoAlpha: 1, y: 0, scale: 1, ease: 'none', stagger: 0.06 }, 0.42)
+            .to('.benefits-section .mega-word', { x: -42, y: -32, ease: 'none' }, 0),
         );
 
-        const mobileAboutCan = gsap.fromTo(
-          '.about-mobile-can',
-          { y: 18, rotate: -4, scale: 0.92 },
-          {
-            y: 0,
-            rotate: 0,
-            scale: 1,
-            duration: 0.82,
-            ease: 'back.out(1.2)',
-            scrollTrigger: {
-              trigger: '.about-mobile-flow',
-              start: 'top 88%',
-            },
-          },
+        add(
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: '.usp-section',
+                start: 'top 88%',
+                end: 'top 20%',
+                scrub: 0.85,
+              },
+            })
+            .fromTo('.usp-kicker', { autoAlpha: 0, y: 26, rotate: -8 }, { autoAlpha: 1, y: 0, rotate: -2, ease: 'none' }, 0)
+            .fromTo('.usp-title', { autoAlpha: 0, y: 62, scale: 0.88 }, { autoAlpha: 1, y: 0, scale: 1, ease: 'none' }, 0.06)
+            .fromTo('.usp-copy', { autoAlpha: 0, y: 38 }, { autoAlpha: 1, y: 0, ease: 'none' }, 0.16)
+            .fromTo('.usp-can-wrap', { autoAlpha: 0.08, y: 70, scale: 0.76, rotate: -8 }, { autoAlpha: 1, y: 0, scale: 1, rotate: 0, ease: 'none' }, 0.26)
+            .fromTo('.usp-orbit-ring', { autoAlpha: 0, scale: 0.45 }, { autoAlpha: 1, scale: 1, ease: 'none', stagger: 0.05 }, 0.32)
+            .fromTo('.usp-active-panel', { autoAlpha: 0, y: 34, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, ease: 'none' }, 0.46)
+            .fromTo('.usp-label', { autoAlpha: 0, y: 30, scale: 0.92 }, { autoAlpha: 1, y: 0, scale: 1, ease: 'none', stagger: 0.045 }, 0.56)
+            .to('.usp-herb', { y: 54, rotate: -6, ease: 'none' }, 0)
+            .to('.usp-mega', { x: 54, ease: 'none' }, 0),
         );
 
-        const mobileUspCan = gsap.fromTo(
-          '.usp-can-wrap',
-          { autoAlpha: 0.01, y: 34, scale: 0.92, rotate: -3 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            rotate: 0,
-            duration: 0.78,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: '.usp-section',
-              start: 'top 86%',
-            },
-          },
+        add(gsap.to('.usp-can-image', { y: -10, rotate: 1.2, duration: 2.8, ease: 'sine.inOut', yoyo: true, repeat: -1 }));
+        add(gsap.to('.usp-orbit-ring', { rotate: 360, duration: 26, ease: 'none', repeat: -1, stagger: 4 }));
+
+        add(
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: '.cta-section',
+                start: 'top 88%',
+                end: 'top 48%',
+                scrub: 0.9,
+              },
+            })
+            .fromTo('.cta-kicker', { autoAlpha: 0, y: 28, rotate: -8 }, { autoAlpha: 1, y: 0, rotate: 2, duration: 0.24, ease: 'none' }, 0)
+            .fromTo('.cta-title-line', { yPercent: 115, autoAlpha: 0, rotate: -6 }, { yPercent: 0, autoAlpha: 1, rotate: 0, duration: 0.34, ease: 'none', stagger: 0.04 }, 0.06)
+            .fromTo('.cta-copy', { autoAlpha: 0, y: 34 }, { autoAlpha: 1, y: 0, duration: 0.24, ease: 'none' }, 0.22)
+            .fromTo('.cta-microcopy', { autoAlpha: 0, x: -30, scale: 0.92 }, { autoAlpha: 1, x: 0, scale: 1, duration: 0.24, ease: 'none' }, 0.28)
+            .fromTo('.cta-actions > *', { y: 34, scale: 0.9 }, { y: 0, scale: 1, duration: 0.22, ease: 'none', stagger: 0.04 }, 0.34)
+            .fromTo('.cta-can-wrap', { autoAlpha: 0.05, y: 90, scale: 0.72, rotate: -10 }, { autoAlpha: 1, y: 0, scale: 1, rotate: 0, duration: 0.36, ease: 'none' }, 0.16)
+            .fromTo('.cta-ring', { autoAlpha: 0, scale: 0.4, rotate: -18 }, { autoAlpha: 1, scale: 1, rotate: 0, duration: 0.32, ease: 'none', stagger: 0.04 }, 0.22)
+            .to('.cta-mega', { x: 52, ease: 'none' }, 0),
         );
+
+        add(gsap.to('.cta-can-image', { y: -12, rotate: 1.4, duration: 3.1, ease: 'sine.inOut', yoyo: true, repeat: -1 }));
+        add(gsap.to('.cta-ring', { rotate: 360, duration: 30, ease: 'none', repeat: -1, stagger: 5 }));
 
         return () => {
-          mobileHero.kill();
-          mobileUsp.kill();
-          mobileProblemCards.kill();
-          mobileBenefitCards.kill();
-          mobileAboutFlow.kill();
-          mobileAboutCan.kill();
-          mobileUspCan.kill();
+          mobileTweens.forEach((animation) => animation.kill());
         };
       });
 

@@ -79,7 +79,7 @@ export default function AboutProduct({ aboutCanRef }) {
 
           <div className="about-mobile-flow mt-5 rounded-[1.35rem] border-2 border-ink bg-pale/70 p-4 shadow-soft md:hidden">
             <div className="flex items-center justify-between gap-3">
-              <div className="flex-1 rounded-[1rem] bg-paper/85 p-3 text-center">
+              <div className="about-mobile-old flex-1 rounded-[1rem] bg-paper/85 p-3 text-center">
                 <img
                   src={productBox}
                   alt="Traditional Beras Kencur box"
@@ -89,10 +89,10 @@ export default function AboutProduct({ aboutCanRef }) {
                   Dulu
                 </span>
               </div>
-              <div className="display-type text-4xl text-ink" aria-hidden="true">
+              <div className="about-mobile-arrow display-type text-4xl text-ink" aria-hidden="true">
                 &gt;
               </div>
-              <div className="flex-1 rounded-[1rem] bg-cream/65 p-3 text-center">
+              <div className="about-mobile-new flex-1 rounded-[1rem] bg-cream/65 p-3 text-center">
                 <img
                   src={productCan}
                   alt="Modern ready-to-drink Beras Kencur can"

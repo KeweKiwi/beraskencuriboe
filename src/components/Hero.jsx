@@ -57,11 +57,36 @@ export default function Hero({ heroRef, mainCanRef, onBuy }) {
           <h1 className="hero-title display-type max-w-3xl text-ink">
             Jamu Tradisional, Rasa Masa Kini.
           </h1>
-          <img
-            src={productCan}
-            alt=""
-            className="mobile-hero-can can-local mx-auto my-4 block w-36 sm:w-44 md:hidden"
-          />
+          <div className="mobile-can-stage relative mx-auto mb-7 mt-5 block h-[275px] w-full max-w-[330px] md:hidden">
+            <div className="mobile-stage-glow absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-paper/45 blur-xl" />
+            <div className="mobile-stage-ring absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full border border-ink/10" />
+            <div className="mobile-stage-ring mobile-stage-ring-small absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full border border-paper/70" />
+            <img
+              src={productCan}
+              alt=""
+              className="mobile-ghost-can mobile-ghost-can-left can-local absolute left-4 top-20 w-20 -rotate-[18deg] opacity-35"
+            />
+            <img
+              src={productCan}
+              alt=""
+              className="mobile-ghost-can mobile-ghost-can-right can-local absolute right-3 top-4 w-24 rotate-[16deg] opacity-35"
+            />
+            <img
+              src={kencur}
+              alt=""
+              className="mobile-orbit-kencur float-alt absolute right-3 top-16 w-20 opacity-85"
+            />
+            <img
+              src={rice}
+              alt=""
+              className="mobile-orbit-rice drift absolute bottom-5 left-5 w-20 opacity-85"
+            />
+            <img
+              src={productCan}
+              alt="Beras Kencur by Jamu Iboe modern can"
+              className="mobile-hero-can mobile-main-can can-local absolute left-1/2 top-5 w-36 -translate-x-1/2"
+            />
+          </div>
           <p className="body-copy mt-5 max-w-2xl text-sm font-semibold text-forest sm:text-base md:mt-6 md:text-lg">
             Beras Kencur by Jamu Iboe menghadirkan rasa autentik jamu Indonesia dalam
             kemasan modern yang praktis, fresh, dan relevan untuk gaya hidup sehat masa kini.
@@ -72,7 +97,7 @@ export default function Hero({ heroRef, mainCanRef, onBuy }) {
               (badge, index) => (
                 <span
                   key={badge}
-                  className="label-strip text-xs md:text-base"
+                  className="hero-badge label-strip text-xs md:text-base"
                   style={{ transform: `rotate(${index === 1 ? 2 : index === 2 ? -2 : -1}deg)` }}
                 >
                   {badge}
@@ -81,7 +106,7 @@ export default function Hero({ heroRef, mainCanRef, onBuy }) {
             )}
           </div>
 
-          <div className="mt-5 max-w-xl rounded-[1.2rem] border border-forest/15 bg-paper/70 p-3 shadow-soft backdrop-blur md:mt-6 md:rounded-[1.4rem] md:p-4">
+          <div className="hero-hotspot-card mt-5 max-w-xl rounded-[1.2rem] border border-forest/15 bg-paper/70 p-3 shadow-soft backdrop-blur md:mt-6 md:rounded-[1.4rem] md:p-4">
             <div className="flex flex-wrap gap-2">
               {hotspots.map((hotspot) => (
                 <button
@@ -104,7 +129,7 @@ export default function Hero({ heroRef, mainCanRef, onBuy }) {
             </p>
           </div>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row md:mt-7">
+          <div className="hero-actions mt-6 flex flex-col gap-3 sm:flex-row md:mt-7">
             <button
               type="button"
               onClick={scrollToAbout}

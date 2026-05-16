@@ -212,6 +212,43 @@ section[id] {
   animation: drift 12s ease-in-out infinite;
 }
 
+.mobile-can-stage,
+.mobile-main-can,
+.mobile-ghost-can,
+.mobile-stage-ring {
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+}
+
+.mobile-can-stage {
+  isolation: isolate;
+}
+
+.mobile-main-can {
+  z-index: 4;
+}
+
+.mobile-stage-ring::before,
+.mobile-stage-ring::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #fffdf5;
+  box-shadow: 0 0 18px rgba(255, 253, 245, 0.65);
+}
+
+.mobile-stage-ring::before {
+  left: 18%;
+  top: 12%;
+}
+
+.mobile-stage-ring::after {
+  bottom: 14%;
+  right: 16%;
+}
+
 .hotspot-dot {
   position: relative;
   width: 42px;
@@ -514,8 +551,10 @@ section[id] {
     transform: none;
   }
 
-  .usp-label {
-    transform: none !important;
+  .problem-section button,
+  .usp-label,
+  .cta-title-line {
+    will-change: transform, opacity;
   }
 }
 
@@ -628,10 +667,6 @@ section[id] {
   .usp-active-panel {
     margin-top: 0.5rem;
     padding: 0.9rem;
-  }
-
-  .problem-section button {
-    transform: none !important;
   }
 
   .problem-section .pattern-layer,
