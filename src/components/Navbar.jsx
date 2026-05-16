@@ -42,7 +42,7 @@ export default function Navbar({ onBuy }) {
   const darkHeader = onDarkSection && !open;
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 px-3 py-2 md:px-6 md:py-3">
+    <header className="sticky left-0 right-0 top-0 z-50 px-3 py-2 md:px-6 md:py-3 lg:fixed">
       <nav
         className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border px-3 py-2 transition-all duration-300 md:px-5 md:py-3 ${
           darkHeader

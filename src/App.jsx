@@ -359,16 +359,16 @@ export default function App() {
 
         const mobileUsp = gsap.fromTo(
           '.usp-label',
-          { autoAlpha: 0, y: 24 },
+          { y: 18, scale: 0.98 },
           {
-            autoAlpha: 1,
             y: 0,
+            scale: 1,
             duration: 0.7,
             stagger: 0.08,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: '.usp-section',
-              start: 'top 72%',
+              start: 'top 86%',
             },
           },
         );
@@ -407,11 +407,63 @@ export default function App() {
           },
         );
 
+        const mobileAboutFlow = gsap.fromTo(
+          '.about-mobile-flow',
+          { autoAlpha: 0, y: 34, scale: 0.96 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.78,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.about-mobile-flow',
+              start: 'top 88%',
+            },
+          },
+        );
+
+        const mobileAboutCan = gsap.fromTo(
+          '.about-mobile-can',
+          { y: 18, rotate: -4, scale: 0.92 },
+          {
+            y: 0,
+            rotate: 0,
+            scale: 1,
+            duration: 0.82,
+            ease: 'back.out(1.2)',
+            scrollTrigger: {
+              trigger: '.about-mobile-flow',
+              start: 'top 88%',
+            },
+          },
+        );
+
+        const mobileUspCan = gsap.fromTo(
+          '.usp-can-wrap',
+          { autoAlpha: 0.01, y: 34, scale: 0.92, rotate: -3 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            rotate: 0,
+            duration: 0.78,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.usp-section',
+              start: 'top 86%',
+            },
+          },
+        );
+
         return () => {
           mobileHero.kill();
           mobileUsp.kill();
           mobileProblemCards.kill();
           mobileBenefitCards.kill();
+          mobileAboutFlow.kill();
+          mobileAboutCan.kill();
+          mobileUspCan.kill();
         };
       });
 
@@ -427,7 +479,7 @@ export default function App() {
             scrollTrigger: {
               trigger: element,
               start: 'top 92%',
-              toggleActions: 'play none none reverse',
+              toggleActions: 'play none none none',
             },
           },
         );
@@ -449,7 +501,15 @@ export default function App() {
       return () => mm.revert();
     }, appRef);
 
-    return () => ctx.revert();
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener('load', refresh);
+    const refreshCall = gsap.delayedCall(0.8, refresh);
+
+    return () => {
+      window.removeEventListener('load', refresh);
+      refreshCall.kill();
+      ctx.revert();
+    };
   }, []);
 
   return (

@@ -534,7 +534,7 @@ section[id] {
   }
 
   .section-title {
-    font-size: clamp(2.8rem, 14vw, 4.25rem);
+    font-size: clamp(2.65rem, 13vw, 3.8rem);
     line-height: 0.96;
   }
 
@@ -583,6 +583,51 @@ section[id] {
   .about-visual .label-strip {
     min-height: 34px;
     padding: 0.48rem 0.62rem;
+  }
+
+  .about-mobile-flow {
+    overflow: hidden;
+  }
+
+  .about-mobile-flow .label-strip {
+    min-height: 32px;
+    padding: 0.45rem 0.58rem;
+  }
+
+  .usp-section {
+    padding-top: 3.75rem;
+  }
+
+  .usp-title {
+    font-size: clamp(3rem, 13.5vw, 3.65rem);
+    line-height: 0.94;
+  }
+
+  .usp-copy {
+    text-align: left;
+  }
+
+  .usp-stage {
+    gap: 0.85rem;
+  }
+
+  .usp-stage::before {
+    width: min(76vw, 310px);
+    height: min(76vw, 310px);
+    top: 21%;
+  }
+
+  .usp-label {
+    min-height: 44px;
+    border-radius: 6px;
+    padding-block: 0.58rem;
+    font-size: 0.95rem;
+    box-shadow: 4px 5px 0 rgba(245, 232, 199, 0.08);
+  }
+
+  .usp-active-panel {
+    margin-top: 0.5rem;
+    padding: 0.9rem;
   }
 
   .problem-section button {

@@ -35,7 +35,7 @@ export default function Hero({ heroRef, mainCanRef, onBuy }) {
       id="home"
       ref={heroRef}
       data-can-phase="hero"
-      className="section-shell hero-transition-section green-noise min-h-screen px-0 pb-10 pt-24 text-ink md:pt-28 lg:pb-10"
+      className="section-shell hero-transition-section green-noise min-h-screen px-0 pb-10 pt-8 text-ink md:pt-12 lg:pb-10 lg:pt-28"
     >
       <div className="mega-word parallax-word left-1/2 top-24 -translate-x-1/2 opacity-80">
         Beras Kencur

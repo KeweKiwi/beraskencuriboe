@@ -24,7 +24,7 @@ export default function AboutProduct({ aboutCanRef }) {
       <img src={leafOne} alt="" className="float-slow absolute right-2 top-24 hidden w-32 opacity-60 md:right-14 md:block md:w-44" />
 
       <div className="section-inner relative z-10 grid items-center gap-6 md:gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
-        <div className="about-visual reveal relative order-2 min-h-[285px] md:min-h-[460px] lg:order-2 lg:min-h-[500px]">
+        <div className="about-visual reveal relative order-2 hidden min-h-[285px] md:block md:min-h-[460px] lg:order-2 lg:min-h-[500px]">
           <div className="absolute inset-x-0 top-8 h-[230px] rounded-[1.6rem] bg-pale/55 shadow-soft md:top-16 md:h-[360px] md:rounded-[2.5rem]" />
 
           <div className="about-box absolute left-2 top-14 z-20 rounded-[1.1rem] bg-paper/80 p-2.5 shadow-soft md:left-5 md:top-24 md:rounded-[1.6rem] md:p-5">
@@ -74,6 +74,37 @@ export default function AboutProduct({ aboutCanRef }) {
               Mengusung konsep "tradisi dalam kemasan modern", produk ini bertujuan untuk
               menghidupkan kembali minat generasi muda terhadap jamu tanpa menghilangkan esensi
               dan nilai alaminya.
+            </p>
+          </div>
+
+          <div className="about-mobile-flow mt-5 rounded-[1.35rem] border-2 border-ink bg-pale/70 p-4 shadow-soft md:hidden">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex-1 rounded-[1rem] bg-paper/85 p-3 text-center">
+                <img
+                  src={productBox}
+                  alt="Traditional Beras Kencur box"
+                  className="mx-auto h-24 object-contain drop-shadow-xl"
+                />
+                <span className="label-strip mt-3 text-[11px]" style={{ transform: 'rotate(-2deg)' }}>
+                  Dulu
+                </span>
+              </div>
+              <div className="display-type text-4xl text-ink" aria-hidden="true">
+                &gt;
+              </div>
+              <div className="flex-1 rounded-[1rem] bg-cream/65 p-3 text-center">
+                <img
+                  src={productCan}
+                  alt="Modern ready-to-drink Beras Kencur can"
+                  className="about-mobile-can can-local mx-auto h-32 object-contain"
+                />
+                <span className="label-strip mt-2 text-[11px]" style={{ transform: 'rotate(2deg)' }}>
+                  Sekarang
+                </span>
+              </div>
+            </div>
+            <p className="mt-4 text-center text-xs font-extrabold uppercase leading-relaxed text-forest">
+              Dari jamu tradisional menjadi minuman siap minum yang lebih praktis.
             </p>
           </div>
 
