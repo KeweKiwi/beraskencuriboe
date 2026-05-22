@@ -369,6 +369,60 @@ section[id] {
   will-change: transform, opacity;
 }
 
+.articles-section {
+  background-image:
+    radial-gradient(circle at 14% 18%, rgba(245, 232, 199, 0.62), transparent 22rem),
+    radial-gradient(circle at 86% 28%, rgba(131, 169, 76, 0.2), transparent 24rem),
+    linear-gradient(180deg, #ddead7 0%, #c8d8a9 100%);
+}
+
+.article-card {
+  isolation: isolate;
+  transform-origin: 50% 76%;
+  will-change: transform, opacity;
+}
+
+.article-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(115deg, transparent 0%, rgba(255, 253, 245, 0.42) 48%, transparent 72%);
+  opacity: 0;
+  transform: translateX(-120%);
+  transition: transform 0.75s ease, opacity 0.75s ease;
+  pointer-events: none;
+}
+
+.article-card:hover::after,
+.article-card:focus-within::after {
+  opacity: 1;
+  transform: translateX(120%);
+}
+
+.article-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.article-visual {
+  box-shadow: inset 0 0 0 1px rgba(18, 61, 42, 0.08);
+}
+
+.article-image,
+.article-orbit {
+  will-change: transform, opacity;
+}
+
+.articles-title {
+  font-size: clamp(3.2rem, 5.4vw, 5.7rem);
+  line-height: 0.94;
+}
+
+.article-takeaway {
+  min-height: 104px;
+}
+
 .cta-section {
   isolation: isolate;
 }
@@ -667,6 +721,54 @@ section[id] {
   .usp-active-panel {
     margin-top: 0.5rem;
     padding: 0.9rem;
+  }
+
+  .articles-section {
+    padding-top: 4rem;
+  }
+
+  .articles-title {
+    font-size: clamp(2.5rem, 11vw, 3.45rem);
+    line-height: 0.95;
+  }
+
+  .articles-copy {
+    line-height: 1.58;
+  }
+
+  .article-card {
+    border-radius: 1.2rem;
+  }
+
+  .article-card:hover::after,
+  .article-card:focus-within::after {
+    opacity: 0;
+  }
+
+  .article-visual {
+    min-height: 168px;
+  }
+
+  .article-takeaway {
+    min-height: auto;
+  }
+
+  .quiz-shell {
+    border-radius: 1.2rem;
+    padding: 1rem;
+  }
+
+  .quiz-title {
+    font-size: clamp(2.45rem, 11.5vw, 3.2rem);
+    line-height: 0.95;
+  }
+
+  .quiz-board {
+    gap: 0.65rem;
+  }
+
+  .quiz-item {
+    will-change: transform, opacity;
   }
 
   .problem-section .pattern-layer,

@@ -8,6 +8,7 @@ import ProblemSolution from './components/ProblemSolution.jsx';
 import Benefits from './components/Benefits.jsx';
 import USP from './components/USP.jsx';
 import BrandIdentity from './components/BrandIdentity.jsx';
+import Articles from './components/Articles.jsx';
 import MiniQuiz from './components/MiniQuiz.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import CTA from './components/CTA.jsx';
@@ -230,6 +231,60 @@ export default function App() {
           stagger: 5,
         });
 
+        const articlesSection = document.querySelector('.articles-section');
+        const articlesTimeline = articlesSection
+          ? gsap
+              .timeline({
+                scrollTrigger: {
+                  trigger: articlesSection,
+                  start: 'top 82%',
+                  end: 'top 18%',
+                  scrub: 0.85,
+                },
+              })
+              .fromTo(
+                '.articles-kicker',
+                { autoAlpha: 0, x: -44, rotate: -8 },
+                { autoAlpha: 1, x: 0, rotate: -2, ease: 'power2.out' },
+                0,
+              )
+              .fromTo(
+                '.articles-title',
+                { autoAlpha: 0, y: 70, scale: 0.9 },
+                { autoAlpha: 1, y: 0, scale: 1, ease: 'power3.out' },
+                0.08,
+              )
+              .fromTo(
+                '.articles-copy',
+                { autoAlpha: 0, y: 34 },
+                { autoAlpha: 1, y: 0, ease: 'power2.out' },
+                0.18,
+              )
+              .fromTo(
+                '.article-card',
+                { autoAlpha: 0, y: 84, scale: 0.88, rotate: (index) => [-5, 0, 5][index] || 0 },
+                { autoAlpha: 1, y: 0, scale: 1, rotate: (index) => [-1.2, 0, 1.2][index] || 0, ease: 'back.out(1.15)', stagger: 0.1 },
+                0.18,
+              )
+              .fromTo(
+                '.article-orbit',
+                { autoAlpha: 0, scale: 0.45 },
+                { autoAlpha: 1, scale: 1, ease: 'power2.out', stagger: 0.06 },
+                0.28,
+              )
+              .to('.articles-mega', { x: 90, ease: 'none' }, 0)
+          : null;
+
+        const articleFloat = gsap.to('.article-image', {
+          y: -10,
+          rotate: '+=1.3',
+          duration: 3.4,
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1,
+          stagger: 0.18,
+        });
+
         let transition;
         const getTargetMetrics = () => {
           const start = mainCan.getBoundingClientRect();
@@ -341,6 +396,8 @@ export default function App() {
           ctaTimeline?.kill();
           ctaFloat.kill();
           ctaRingSpin.kill();
+          articlesTimeline?.kill();
+          articleFloat.kill();
         };
       });
 
@@ -504,6 +561,44 @@ export default function App() {
           gsap
             .timeline({
               scrollTrigger: {
+                trigger: '.articles-section',
+                start: 'top 86%',
+                end: 'top 18%',
+                scrub: 0.85,
+              },
+            })
+            .fromTo('.articles-kicker', { autoAlpha: 0, x: -34, rotate: -9 }, { autoAlpha: 1, x: 0, rotate: -2, ease: 'none' }, 0)
+            .fromTo('.articles-title', { autoAlpha: 0, y: 56, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, ease: 'none' }, 0.08)
+            .fromTo('.articles-copy', { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, ease: 'none' }, 0.18)
+            .fromTo('.article-card', { autoAlpha: 0, y: 62, scale: 0.9, rotate: (index) => (index % 2 ? 2 : -2) }, { autoAlpha: 1, y: 0, scale: 1, rotate: 0, ease: 'none', stagger: 0.08 }, 0.32)
+            .fromTo('.article-orbit', { autoAlpha: 0, scale: 0.55 }, { autoAlpha: 1, scale: 1, ease: 'none', stagger: 0.05 }, 0.42)
+            .to('.articles-mega', { x: 44, y: -28, ease: 'none' }, 0),
+        );
+
+        add(gsap.to('.article-image', { y: -8, rotate: '+=1.2', duration: 3.2, ease: 'sine.inOut', yoyo: true, repeat: -1, stagger: 0.16 }));
+
+        add(
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: '#quiz',
+                start: 'top 86%',
+                end: 'top 26%',
+                scrub: 0.85,
+              },
+            })
+            .fromTo('.quiz-kicker', { autoAlpha: 0, x: -34, rotate: -9 }, { autoAlpha: 1, x: 0, rotate: -2, ease: 'none' }, 0)
+            .fromTo('.quiz-title', { autoAlpha: 0, y: 52, scale: 0.9, rotate: -2 }, { autoAlpha: 1, y: 0, scale: 1, rotate: 0, ease: 'none' }, 0.06)
+            .fromTo('.quiz-copy', { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, ease: 'none' }, 0.16)
+            .fromTo('.quiz-result', { autoAlpha: 0, y: 36, scale: 0.92 }, { autoAlpha: 1, y: 0, scale: 1, ease: 'none' }, 0.24)
+            .fromTo('.quiz-item', { autoAlpha: 0, x: (index) => (index % 2 ? 36 : -36), y: 20, scale: 0.92 }, { autoAlpha: 1, x: 0, y: 0, scale: 1, ease: 'none', stagger: 0.045 }, 0.34)
+            .to('#quiz .pattern-layer', { y: -28, ease: 'none' }, 0),
+        );
+
+        add(
+          gsap
+            .timeline({
+              scrollTrigger: {
                 trigger: '.cta-section',
                 start: 'top 88%',
                 end: 'top 48%',
@@ -591,6 +686,7 @@ export default function App() {
         <Benefits />
         <USP />
         <BrandIdentity />
+        <Articles />
         <MiniQuiz />
         <Testimonials />
         <CTA onBuy={() => setBuyOpen(true)} />

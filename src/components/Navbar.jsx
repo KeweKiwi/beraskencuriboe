@@ -81,8 +81,8 @@ export default function Navbar({ onBuy }) {
         </button>
 
         <div
-          className={`hidden items-center gap-1 rounded-full p-1 transition lg:flex ${
-            darkHeader ? 'bg-paper/88' : 'bg-cream/70'
+          className={`hidden items-center gap-1 rounded-full border p-1 transition lg:flex ${
+            darkHeader ? 'border-cream/20 bg-cream/10' : 'border-transparent bg-cream/70'
           }`}
         >
           {navItems.map((item) => (
@@ -90,7 +90,11 @@ export default function Navbar({ onBuy }) {
               key={item.target}
               type="button"
               onClick={() => scrollTo(item.target)}
-              className="rounded-full px-4 py-2 text-sm font-bold text-ink transition hover:bg-ink hover:text-paper"
+              className={`rounded-full px-4 py-2 text-sm font-bold transition ${
+                darkHeader
+                  ? 'text-paper hover:bg-cream hover:text-ink'
+                  : 'text-ink hover:bg-ink hover:text-paper'
+              }`}
             >
               {item.label}
             </button>
