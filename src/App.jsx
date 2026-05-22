@@ -9,11 +9,13 @@ import Benefits from './components/Benefits.jsx';
 import USP from './components/USP.jsx';
 import BrandIdentity from './components/BrandIdentity.jsx';
 import Articles from './components/Articles.jsx';
+import ArticlePage from './components/ArticlePage.jsx';
 import MiniQuiz from './components/MiniQuiz.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import CTA from './components/CTA.jsx';
 import Footer from './components/Footer.jsx';
 import productCan from './assets/images/product-can.png';
+import { articles, getArticleBySlug } from './data/articles.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,8 +26,26 @@ export default function App() {
   const transitionCanRef = useRef(null);
   const aboutCanRef = useRef(null);
   const [buyOpen, setBuyOpen] = useState(false);
+  const [path, setPath] = useState(() => window.location.pathname);
+
+  const isArticlePage = path.startsWith('/artikel/');
+  const articleSlug = isArticlePage ? path.replace('/artikel/', '').replace(/\/$/, '') : '';
+  const currentArticle = isArticlePage ? getArticleBySlug(articleSlug) : null;
 
   useEffect(() => {
+    const syncPath = () => setPath(window.location.pathname);
+
+    window.addEventListener('popstate', syncPath);
+    window.addEventListener('hashchange', syncPath);
+    return () => {
+      window.removeEventListener('popstate', syncPath);
+      window.removeEventListener('hashchange', syncPath);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isArticlePage) return undefined;
+
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
@@ -562,16 +582,16 @@ export default function App() {
             .timeline({
               scrollTrigger: {
                 trigger: '.articles-section',
-                start: 'top 86%',
-                end: 'top 18%',
-                scrub: 0.85,
+                start: 'top 90%',
+                end: 'top 34%',
+                scrub: 0.65,
               },
             })
             .fromTo('.articles-kicker', { autoAlpha: 0, x: -34, rotate: -9 }, { autoAlpha: 1, x: 0, rotate: -2, ease: 'none' }, 0)
             .fromTo('.articles-title', { autoAlpha: 0, y: 56, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, ease: 'none' }, 0.08)
             .fromTo('.articles-copy', { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, ease: 'none' }, 0.18)
-            .fromTo('.article-card', { autoAlpha: 0, y: 62, scale: 0.9, rotate: (index) => (index % 2 ? 2 : -2) }, { autoAlpha: 1, y: 0, scale: 1, rotate: 0, ease: 'none', stagger: 0.08 }, 0.32)
-            .fromTo('.article-orbit', { autoAlpha: 0, scale: 0.55 }, { autoAlpha: 1, scale: 1, ease: 'none', stagger: 0.05 }, 0.42)
+            .fromTo('.article-card', { autoAlpha: 0.18, y: 44, scale: 0.94, rotate: (index) => (index % 2 ? 1.5 : -1.5) }, { autoAlpha: 1, y: 0, scale: 1, rotate: 0, ease: 'none', stagger: 0.06 }, 0.24)
+            .fromTo('.article-orbit', { autoAlpha: 0.25, scale: 0.7 }, { autoAlpha: 1, scale: 1, ease: 'none', stagger: 0.05 }, 0.3)
             .to('.articles-mega', { x: 44, y: -28, ease: 'none' }, 0),
         );
 
@@ -666,31 +686,37 @@ export default function App() {
       refreshCall.kill();
       ctx.revert();
     };
-  }, []);
+  }, [isArticlePage]);
 
   return (
     <div ref={appRef} className="min-h-screen overflow-x-clip bg-paper text-ink">
       <Navbar onBuy={() => setBuyOpen(true)} />
-      <img
-        ref={transitionCanRef}
-        src={productCan}
-        alt=""
-        className="transition-can"
-        aria-hidden="true"
-      />
+      {isArticlePage ? (
+        <ArticlePage article={currentArticle} articles={articles} />
+      ) : (
+        <>
+          <img
+            ref={transitionCanRef}
+            src={productCan}
+            alt=""
+            className="transition-can"
+            aria-hidden="true"
+          />
 
-      <main>
-        <Hero heroRef={heroRef} mainCanRef={mainCanRef} onBuy={() => setBuyOpen(true)} />
-        <AboutProduct aboutCanRef={aboutCanRef} />
-        <ProblemSolution />
-        <Benefits />
-        <USP />
-        <BrandIdentity />
-        <Articles />
-        <MiniQuiz />
-        <Testimonials />
-        <CTA onBuy={() => setBuyOpen(true)} />
-      </main>
+          <main>
+            <Hero heroRef={heroRef} mainCanRef={mainCanRef} onBuy={() => setBuyOpen(true)} />
+            <AboutProduct aboutCanRef={aboutCanRef} />
+            <ProblemSolution />
+            <Benefits />
+            <USP />
+            <BrandIdentity />
+            <Articles />
+            <MiniQuiz />
+            <Testimonials />
+            <CTA onBuy={() => setBuyOpen(true)} />
+          </main>
+        </>
+      )}
       <Footer />
 
       {buyOpen ? (

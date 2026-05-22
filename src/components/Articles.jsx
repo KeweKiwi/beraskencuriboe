@@ -1,42 +1,7 @@
 import { useState } from 'react';
-import productCan from '../assets/images/product-can.png';
-import productBox from '../assets/images/product-box.png';
 import leafOne from '../assets/images/leaf-1.png';
 import rice from '../assets/images/rice.png';
-import kencur from '../assets/images/kencur.png';
-
-const articles = [
-  {
-    category: 'Heritage',
-    readTime: '3 min read',
-    title: 'Beras kencur, warisan rasa yang tetap relevan.',
-    summary:
-      'Jamu tidak harus terasa jauh dari hidup modern. Cerita beras kencur dimulai dari tradisi, lalu menemukan cara baru untuk tetap dekat.',
-    takeaway: 'Nilai tradisi tetap terasa kuat ketika disajikan dengan bahasa visual yang lebih segar.',
-    image: productBox,
-    imageAlt: 'Kemasan tradisional Beras Kencur Jamu Iboe',
-  },
-  {
-    category: 'Modern Pack',
-    readTime: '4 min read',
-    title: 'Kenapa kemasan modern membuat jamu lebih dilirik?',
-    summary:
-      'Visual yang fresh, bentuk siap minum, dan karakter kaleng membantu jamu terasa seperti bagian dari lifestyle anak muda.',
-    takeaway: 'Kemasan modern bukan sekadar tampilan, tapi jembatan agar jamu terasa praktis dan relevan.',
-    image: productCan,
-    imageAlt: 'Kaleng modern Beras Kencur by Jamu Iboe',
-  },
-  {
-    category: 'Healthy Ritual',
-    readTime: '2 min read',
-    title: 'Ritual sehat praktis untuk hari yang padat.',
-    summary:
-      'Rutinitas sehat bisa dimulai dari pilihan kecil: minuman herbal yang natural, mudah dibawa, dan siap dinikmati kapan saja.',
-    takeaway: 'Healthy lifestyle terasa lebih mudah ketika pilihan sehatnya praktis dan menyenangkan.',
-    image: kencur,
-    imageAlt: 'Kencur sebagai bahan alami beras kencur',
-  },
-];
+import { articles } from '../data/articles.js';
 
 export default function Articles() {
   const [active, setActive] = useState(1);
@@ -64,22 +29,24 @@ export default function Articles() {
             </h2>
           </div>
           <p className="articles-copy body-copy max-w-2xl text-sm font-semibold text-forest sm:text-base md:text-lg">
-            Konten ringan untuk memperkuat pesan brand: jamu adalah warisan Indonesia yang bisa
-            tampil fresh, praktis, dan dekat dengan gaya hidup sehat hari ini.
+            Tiga bacaan ringkas untuk mengenal inovasi Beras Kencur Herbal Drink, manfaat jamu
+            beras kencur, dan perjalanan Jamu IBOE sebagai warisan herbal Indonesia.
           </p>
         </div>
 
         <div className="articles-grid mt-7 grid gap-4 md:mt-8 md:grid-cols-3 md:gap-5">
           {articles.map((article, index) => (
-            <article
+            <a
               key={article.title}
+              href={article.href}
               className={`article-card group relative overflow-hidden rounded-[1.35rem] border-2 p-4 shadow-soft transition duration-300 md:rounded-[1.7rem] md:p-5 ${
                 active === index ? 'border-ink bg-paper' : 'border-forest/20 bg-cream/72 hover:border-ink'
               }`}
               onMouseEnter={() => setActive(index)}
               onFocus={() => setActive(index)}
+              onClick={() => setActive(index)}
               style={{ transform: `rotate(${index === 0 ? '-1.2deg' : index === 2 ? '1.2deg' : '0deg'})` }}
-              tabIndex={0}
+              aria-label={`Baca artikel: ${article.title}`}
             >
               <div className="article-visual relative min-h-44 overflow-hidden rounded-[1rem] bg-pale md:min-h-52">
                 <div className="article-orbit absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full border border-ink/10" />
@@ -105,11 +72,11 @@ export default function Articles() {
                 </span>
               </div>
 
-              <h3 className="display-type mt-4 text-[1.72rem] leading-[0.98] text-ink md:text-[2rem]">
-                {article.title}
+              <h3 className="article-card-title display-type mt-4 text-[1.58rem] leading-[0.98] text-ink md:text-[1.85rem]">
+                {article.cardTitle}
               </h3>
-              <p className="mt-3 text-sm font-semibold leading-relaxed text-forest">
-                {article.summary}
+              <p className="article-card-summary mt-3 text-sm font-semibold leading-relaxed text-forest">
+                {article.excerpt}
               </p>
 
               <div
@@ -121,16 +88,14 @@ export default function Articles() {
                 <p className="mt-1 text-sm font-semibold leading-relaxed">{article.takeaway}</p>
               </div>
 
-              <button
-                type="button"
-                onClick={() => setActive(index)}
-                className={`mt-4 w-full rounded-full px-5 py-3 text-sm font-extrabold uppercase transition hover:-translate-y-1 ${
-                  active === index ? 'bg-cream text-ink' : 'bg-ink text-paper hover:bg-forest'
+              <span
+                className={`mt-4 inline-flex w-full justify-center rounded-full px-5 py-3 text-sm font-extrabold uppercase transition group-hover:-translate-y-1 ${
+                  active === index ? 'bg-cream text-ink' : 'bg-ink text-paper group-hover:bg-forest'
                 }`}
               >
-                Baca ringkas
-              </button>
-            </article>
+                Baca artikel
+              </span>
+            </a>
           ))}
         </div>
       </div>

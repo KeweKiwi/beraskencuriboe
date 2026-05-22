@@ -377,6 +377,9 @@ section[id] {
 }
 
 .article-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
   isolation: isolate;
   transform-origin: 50% 76%;
   will-change: transform, opacity;
@@ -414,6 +417,14 @@ section[id] {
   will-change: transform, opacity;
 }
 
+.article-card-title {
+  min-height: 5.4rem;
+}
+
+.article-card-summary {
+  min-height: 5.25rem;
+}
+
 .articles-title {
   font-size: clamp(3.2rem, 5.4vw, 5.7rem);
   line-height: 0.94;
@@ -421,6 +432,63 @@ section[id] {
 
 .article-takeaway {
   min-height: 104px;
+}
+
+.article-detail-page {
+  overflow-x: clip;
+}
+
+.article-detail-title {
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+.article-detail-visual,
+.article-detail-image,
+.article-detail-ring,
+.article-related-card {
+  will-change: transform, opacity;
+}
+
+.article-detail-ring {
+  pointer-events: none;
+  box-shadow: 0 0 80px rgba(18, 61, 42, 0.08) inset;
+}
+
+.article-detail-ring::before,
+.article-detail-ring::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #123d2a;
+  box-shadow: 0 0 20px rgba(18, 61, 42, 0.28);
+}
+
+.article-detail-ring::before {
+  left: 16%;
+  top: 14%;
+}
+
+.article-detail-ring::after {
+  bottom: 18%;
+  right: 12%;
+  background: #f5e8c7;
+}
+
+.article-detail-copy {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.article-detail-copy p:first-child::first-letter {
+  float: left;
+  margin: 0.08em 0.12em 0 0;
+  color: #123d2a;
+  font-family: 'Pagkaki', 'Lilita One', system-ui, sans-serif;
+  font-size: 4.4rem;
+  line-height: 0.8;
 }
 
 .cta-section {
@@ -740,6 +808,11 @@ section[id] {
     border-radius: 1.2rem;
   }
 
+  .article-card-title,
+  .article-card-summary {
+    min-height: auto;
+  }
+
   .article-card:hover::after,
   .article-card:focus-within::after {
     opacity: 0;
@@ -751,6 +824,37 @@ section[id] {
 
   .article-takeaway {
     min-height: auto;
+  }
+
+  .article-detail-hero {
+    padding-top: 5.5rem;
+  }
+
+  .article-detail-title {
+    font-size: clamp(2.35rem, 11.5vw, 3.45rem);
+    line-height: 0.96;
+  }
+
+  .article-detail-copy {
+    border-radius: 1.25rem;
+    gap: 1rem;
+  }
+
+  .article-detail-copy p {
+    font-size: 0.98rem;
+    line-height: 1.78;
+  }
+
+  .article-detail-copy p:first-child::first-letter {
+    font-size: 3.35rem;
+  }
+
+  .article-detail-visual {
+    border-radius: 1.4rem;
+  }
+
+  .article-detail-image {
+    max-height: 18rem;
   }
 
   .quiz-shell {

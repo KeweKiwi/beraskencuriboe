@@ -14,7 +14,14 @@ const links = [
 
 export default function Footer() {
   const scrollTo = (target) => {
-    document.getElementById(target)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const section = document.getElementById(target);
+
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+
+    window.location.href = `/#${target}`;
   };
 
   return (
